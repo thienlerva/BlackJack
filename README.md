@@ -6,6 +6,8 @@ class TicTacToe
     {
         Scanner scan = new Scanner(System.in);
         Game game = new Game('o');
+	
+	Computer com = new Computer('x', false);
         
         System.out.println("Tic-Tac-Toe!");
         do
@@ -27,6 +29,8 @@ class TicTacToe
 		
             }
             while (!game.placeMark(row, col));
+	    com.myBoard(game.getBoard());
+	    System.out.println(com);
             game.changePlayer();
 		game.placeMarkByComputer();
 		game.changePlayer();
@@ -256,21 +260,14 @@ class Computer {
 		for(int row=0;row<3;row++) {
 			for(int col=0;col<3;col++) {
 				
-				if(board[row][col]=='x') {
+				if(board[row][col]==this.name || board[row][col]=='-') {
 
 					myBoard[row][col]=true;
-				} else {
-					myBoard[row][col]=false;
-				}
+				} 
 			}
 		}
 
-		for(int i=0;i<3;i++) {
-			for(int j=0;j<3;j++) {
-				System.out.print(myBoard[i][j]);
-			}
-System.out.println();
-		}
+	
 	}
 
 	public String toString() {
