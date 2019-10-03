@@ -6,9 +6,10 @@ public class BlackJack {
         System.out.println("Welcome to Blackjack!");
 
         // Create our playing deck
-        Deck playingDec = new Deck();
-        playingDec.createFullDeck();
-        playingDec.shuffle();
+        Deck playingDeck = new Deck();
+        playingDeck.createFullDeck();
+        playingDeck.shuffle();
+        System.out.println(playingDeck);
 
         //Create a deck for the player
         Deck playerDeck = new Deck();
@@ -33,12 +34,12 @@ public class BlackJack {
 
             // Start dealing
             // Player gets two cards
-            playerDeck.draw(playingDec);
-            playerDeck.draw(playingDec);
+            playerDeck.draw(playingDeck);
+            playerDeck.draw(playingDeck);
 
             //Dealer gets two cards
-            dealerDeck.draw(playingDec);
-            dealerDeck.draw(playingDec);
+            dealerDeck.draw(playingDeck);
+            dealerDeck.draw(playingDeck);
 
             while(true) {
                 System.out.println("Your hand:");
@@ -54,7 +55,7 @@ public class BlackJack {
 
                 //They hit
                 if (response == 1) {
-                    playerDeck.draw(playingDec);
+                    playerDeck.draw(playingDeck);
                     System.out.println("You draw a: " + playerDeck.getCard(playerDeck.deckSize()-1).toString());
 
                     //but if > 21
@@ -82,7 +83,7 @@ public class BlackJack {
 
             // Dealer draws at 16, stand at 17
             while (dealerDeck.cardsValue() < 17 && endRound == false) {
-                dealerDeck.draw(playingDec);
+                dealerDeck.draw(playingDeck);
                 System.out.println("Dealer draws: " + dealerDeck.getCard(dealerDeck.deckSize()-1).toString());
 
             }
@@ -112,8 +113,8 @@ public class BlackJack {
                 endRound = true;
             }
 
-            playerDeck.moveAllToDeck(playingDec);
-            dealerDeck.moveAllToDeck(playingDec);
+            playerDeck.moveAllToDeck(playingDeck);
+            dealerDeck.moveAllToDeck(playingDeck);
             System.out.println("End of hand.");
 
         }
